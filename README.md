@@ -2,7 +2,7 @@
 
 [try-golang](https://github.com/devlights/try-golang) プロジェクトの姉妹版。cgoに関連しているサンプルが配置されています。
 
-![try-golang - Go Version](https://img.shields.io/badge/go-1.21-blue.svg)
+![try-golang - Go Version](https://img.shields.io/badge/go-1.22-blue.svg)
 
 
 ## 参考情報
