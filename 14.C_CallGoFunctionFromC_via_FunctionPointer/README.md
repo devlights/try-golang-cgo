@@ -22,3 +22,13 @@ C側にて関数ポインタを引数に要求する関数に、Go側で定義�
 > Using //export in a file places a restriction on the preamble: since it is copied into two different C output files, it must not contain any definitions, only declarations. If a file contains both definitions and declarations, then the two output files will produce duplicate symbols and the linker will fail. To avoid this, definitions must be placed in preambles in other files, or in C source files.
 
 > ファイル内で//exportを使用すると、プリアンブルに制約が課される。プリアンブルは2つの異なるC出力ファイルにコピーされるため、定義が含まれてはならず、宣言のみが含まれる。ファイルに定義と宣言の両方が含まれていると、2つの出力ファイルに重複したシンボルが生成され、リンカは失敗する。これを避けるには、定義を他のファイルのプリアンブルか、Cのソース・ファイルに記述しなければならない。
+
+本サンプルを実行すると以下のようになる。
+
+```sh
+$ task
+task: [default] go run .
+[C ][func_with_callback] called
+[Go][goCallback] called
+[Go][goCallback] id=100, data="hello world", length=11
+```
