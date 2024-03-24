@@ -1,0 +1,19 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  default:
+    deps: [ build-clib ]
+    cmds:
+      - go build -o libgolib.so -buildmode=c-shared main.go cfuncs.go
+      - nm libgolib.so | grep -F "T clib_my_strlen"
+      - gcc -c -o main.o main.c
+      - gcc -o callgolib main.o -L. -lgolib
+      - file ./callgolib
+      - ldd ./callgolib
+      - LD_LIBRARY_PATH=. ./callgolib
+  build-clib:
+    dir: clib
+    cmds:
+      - gcc -fPIC -shared -o libclib.so lib.c
