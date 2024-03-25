@@ -1,0 +1,30 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  CAPP_NAME: capp
+
+tasks:
+  default:
+    cmds:
+      - task: build-clib
+      - task: build-golib
+      - task: build-cprg
+      - LD_LIBRARY_PATH=. ./{{.CAPP_NAME}}
+      - task: build-cprg-original
+      - LD_LIBRARY_PATH=clib ./{{.CAPP_NAME}}
+  build-clib:
+    dir: clib
+    cmds:
+      - gcc -fPIC -shared -o libclib.so lib.c
+  build-golib:
+    cmds:
+      - go build -o libgolib.so -buildmode=c-shared *.go
+  build-cprg:
+    cmds:
+      - gcc -c -o main.o main.c
+      - gcc -o {{.CAPP_NAME}} main.o -L. -lgolib
+  build-cprg-original:
+    cmds:
+      - gcc -o {{.CAPP_NAME}} main.o -Lclib -lclib
