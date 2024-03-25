@@ -17,3 +17,11 @@ task: [build-cprg-original] gcc -o capp main.o -Lclib -lclib
 task: [default] LD_LIBRARY_PATH=clib ./capp
 my_strlen=10
 ```
+
+## 参考情報
+
+- https://github.com/coreos/pkg/blob/main/dlopen/dlopen.go
+- https://www.kaoriya.net/blog/2020/12/06/yukkuri-go/
+- https://github.com/koron-go/aquestalk
+- https://qiita.com/ryuichi1208/items/57eb41d5943ae746f0a4
+- https://segakuin.com/linux/library/dlopen.html
