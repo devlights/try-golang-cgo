@@ -1,0 +1,15 @@
+# https://taskfile.dev
+
+version: "3"
+
+env:
+  LD_LIBRARY_PATH: .
+
+tasks:
+  default:
+    cmds:
+      - go build -o libgo.so -buildmode=c-shared .
+      - gcc -c -o main.o main.c
+      - gcc -o capp main.o -L. -lgo
+      - ldd ./capp
+      - ./capp
