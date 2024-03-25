@@ -2,5 +2,5 @@
 #include "clib/lib.h"
 
 int main() {
-    printf("%zu\n", clib_my_strlen("helloworld"));
+    printf("clib_my_strlen=%zu\n", my_strlen("helloworld"));
 }

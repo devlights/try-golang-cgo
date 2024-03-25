@@ -1,1 +1,1 @@
-extern size_t clib_my_strlen(const char *s);
+extern size_t my_strlen(const char *s);

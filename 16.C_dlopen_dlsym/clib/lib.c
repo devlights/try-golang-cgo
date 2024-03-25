@@ -1,5 +1,5 @@
-#include <stdio.h>
+#include <string.h>
 
-size_t clib_my_strlen(const char *s) {
-    return 10;
+size_t my_strlen(const char *s) {
+    return strlen(s);
 }
