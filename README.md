@@ -11,3 +11,5 @@
 - [Go Wiki: cgo](https://go.dev/wiki/cgo)
 - [cmd/cgo](https://pkg.go.dev/cmd/cgo)
 - [runtime/cgo](https://pkg.go.dev/runtime/cgo)
+- [cgoを使ったCとGoのリンクの裏側 (1)](https://qiita.com/yugui/items/e71d3d0b3d654a110188)
+- [cgoを使ったCとGoのリンクの裏側 (2)](https://qiita.com/yugui/items/cc490d080e0297251090)
