@@ -1,0 +1,47 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - task: build-lib
+      - task: build-capp
+      - task: build-goapp
+      - task: run-capp
+      - task: run-goapp
+      - task: list-symbols
+      - task: ldd
+  clean:
+    cmds:
+      - make -C lib clean
+      - make -C capp clean
+      - rm -f goapp/goApp
+  build-lib:
+    dir: lib
+    cmds:
+      - make build
+  build-capp:
+    dir: capp
+    cmds:
+      - make build
+  build-goapp:
+    dir: goapp
+    cmds:
+      - go build -o goApp
+  run-capp:
+    dir: capp
+    cmds:
+      - LD_LIBRARY_PATH=../lib ./cApp
+  run-goapp:
+    dir: goapp
+    cmds:
+      - ./goApp
+  list-symbols:
+    cmds:
+      - nm --extern-only capp/cApp   | grep -E ' [T|U] (main|myPrint)'
+      - nm --extern-only goapp/goApp | grep -E ' [T|U] (main|myPrint)'
+  ldd:
+    cmds:
+      - LD_LIBRARY_PATH=lib ldd capp/cApp
+      - ldd goapp/goApp
