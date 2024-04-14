@@ -1,0 +1,10 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - CC=gcc go run -x main.go 2>gcc.txt
+      - CC=clang go run -x main.go 2>clang.txt
+      - grep -o '\-extld=[^ ]*' *.txt
