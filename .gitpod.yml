@@ -16,3 +16,4 @@ vscode:
   extensions:
     - golang.go
     - TakumiI.markdowntable
+    - llvm-vs-code-extensions.vscode-clangd
