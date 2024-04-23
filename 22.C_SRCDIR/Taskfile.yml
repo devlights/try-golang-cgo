@@ -1,0 +1,26 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - task: build-lib
+      - task: build-goapp
+      - task: run-goapp
+  clean:
+    cmds:
+      - make -C libs clean
+      - rm -f ./app
+  build-lib:
+    dir: libs
+    cmds:
+      - make build
+  build-goapp:
+    cmds:
+      - go build -o app
+  run-goapp:
+    cmds:
+      - ./app
+    env:
+      LD_LIBRARY_PATH: libs
