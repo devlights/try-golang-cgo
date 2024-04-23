@@ -22,6 +22,18 @@ import "C"
 import "C"
 ```
 
+この場合は、以下のようにします。
+
+```go
+/*
+#cgo CFLAGS:  -I${SRCDIR}/libs
+#cgo LDFLAGS: -L${SRCDIR}/libs -llibs
+
+#include "libs.h"
+*/
+import "C"
+```
+
 
 この値は、実行時に現在のソースファイルのディレクトリに置換されます。ディレクトリパスは絶対パスで展開されます。
 

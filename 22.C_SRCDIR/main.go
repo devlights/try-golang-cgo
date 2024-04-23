@@ -1,9 +1,10 @@
 package main
 
 /*
+#cgo CFLAGS:  -I${SRCDIR}/libs
 #cgo LDFLAGS: -L${SRCDIR}/libs -llibs
 
-#include "libs/libs.h"
+#include "libs.h"
 */
 import "C"
 import "log"
