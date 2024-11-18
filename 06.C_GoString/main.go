@@ -27,12 +27,12 @@ func main() {
 	// Go -> C
 	//
 	var (
-		goStr = "hello Go World"
-		cStr  = C.CString(goStr)
+		goStr1 = "hello Go World"
+		cStr1  = C.CString(goStr1)
 	)
-	defer C.free(unsafe.Pointer(cStr))
+	defer C.free(unsafe.Pointer(cStr1))
 
-	C.pStr(cStr)
+	C.pStr(cStr1)
 
 	//
 	// C -> Go
