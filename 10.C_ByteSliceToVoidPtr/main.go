@@ -8,7 +8,7 @@ package main
 const int BUF_SIZE = 11;
 
 void setBuf(void *buf) {
-	strncpy((char *)buf, "helloworld", BUF_SIZE);
+	strncpy((char *)buf, "helloworld", BUF_SIZE-1);
 }
 */
 import "C"
