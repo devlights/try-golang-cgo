@@ -8,7 +8,7 @@ package main
 const int BUF_SIZE = 11;
 
 void setBuf(char *buf) {
-	strncpy(buf, "helloworld", BUF_SIZE);
+	strncpy(buf, "helloworld", BUF_SIZE-1);
 }
 */
 import "C"
@@ -30,10 +30,10 @@ func main() {
 	)
 
 	printBuf()
-
-	// C側の宣言では (char *) を引数に要求しているため、unsafe.Pointer を *C.char にキャストして渡す.
-	// unsafe.Pointer は、 (void *) を表すので、任意のポインタ型にキャスト可能.
-	C.setBuf(charPtr)
-
+	{
+		// C側の宣言では (char *) を引数に要求しているため、unsafe.Pointer を *C.char にキャストして渡す.
+		// unsafe.Pointer は、 (void *) を表すので、任意のポインタ型にキャスト可能.
+		C.setBuf(charPtr)
+	}
 	printBuf()
 }
