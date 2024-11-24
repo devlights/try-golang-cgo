@@ -29,10 +29,10 @@ func main() {
 	)
 
 	printBuf()
-
-	// C側の宣言では (void *) を引数に要求しているため、unsafe.Pointer を渡す.
-	// unsafe.Pointer は、 (void *) を表す.
-	C.setBuf(bufPtr)
-
+	{
+		// C側の宣言では (void *) を引数に要求しているため、unsafe.Pointer を渡す.
+		// unsafe.Pointer は、 (void *) を表す.
+		C.setBuf(bufPtr)
+	}
 	printBuf()
 }
