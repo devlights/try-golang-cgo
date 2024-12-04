@@ -1,0 +1,16 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - go build -o liba.so -buildmode=c-shared main.go
+      - gcc -c -o app.o app.c
+      - gcc -o app app.o -L. -la
+      - ./app hello world
+    env:
+      LD_LIBRARY_PATH: .
