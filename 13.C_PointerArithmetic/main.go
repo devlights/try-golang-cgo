@@ -5,9 +5,18 @@ package main
 #include <stdlib.h>
 #include <string.h>
 
+const int SKIP_BYTES = 6;
+
+// cgo側でポインタ演算後のアドレスで処理
 void p(const void *v) {
 	char *m = (char *)v;
 	printf("%s\n", m);
+}
+
+// 自分でポインタ演算して処理
+void p2(const void *v, const int skip) {
+	char *m = (char *)v;
+	printf("%s\n", m+skip);
 }
 */
 import "C"
@@ -28,8 +37,9 @@ func main() {
 	//
 	// 以下はメモリアドレスを6バイト進めたポインタを取得している
 	var (
-		offsetPtr = unsafe.Pointer(uintptr(cStrPtr) + 6)
+		offsetPtr = unsafe.Pointer(uintptr(cStrPtr) + uintptr(C.SKIP_BYTES))
 	)
 
 	C.p(offsetPtr)
+	C.p2(cStrPtr, C.SKIP_BYTES)
 }
