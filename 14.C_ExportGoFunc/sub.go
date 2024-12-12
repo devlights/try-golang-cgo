@@ -25,8 +25,8 @@ func go_end() {
 func go_main(cId C.int, cData unsafe.Pointer, cLength C.size_t) {
 	var (
 		id     = int(cId)
-		data   = C.GoString((*C.char)(cData))
 		length = int(cLength)
+		data   = C.GoStringN((*C.char)(cData), C.int(length))
 	)
 
 	log.Println("[Go][go_main ] called")
