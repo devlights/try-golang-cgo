@@ -1,0 +1,30 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - task: run
+  run:
+    deps: [ build ]
+    cmds:
+      - ./app
+    env:
+      LD_LIBRARY_PATH: .
+  build:
+    cmds:
+      - task: build-c
+  build-c:
+    deps: [ build-sofile ]
+    internal: true
+    cmds:
+      - gcc -o app app.c -I. -L. -lapp
+  build-sofile:
+    internal: true
+    cmds:
+      - go build -o libapp.so -buildmode=c-shared main.go
+
