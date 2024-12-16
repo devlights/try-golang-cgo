@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "libapp.h"
+
+extern int add(int, int);
 
 int main(void) {
     int x = 10;
