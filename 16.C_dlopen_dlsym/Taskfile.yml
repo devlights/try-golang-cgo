@@ -24,7 +24,7 @@ tasks:
   build-cprg:
     cmds:
       - gcc -c -o main.o main.c
-      - gcc -o {{.CAPP_NAME}} main.o -L. -lgolib
+      - gcc -o {{.CAPP_NAME}} main.o -L. -Lclib -lgolib -lclib
   build-cprg-original:
     cmds:
-      - gcc -o {{.CAPP_NAME}} main.o -Lclib -lclib
+      - gcc -o {{.CAPP_NAME}} main.o -L. -Lclib -lclib
