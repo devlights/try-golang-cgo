@@ -10,5 +10,6 @@ void my_printf(const char *msg) {
 import "C"
 
 func init() {
+	println(">> cfuncs.init() called")
 	m["cfuncs"] = true
 }
