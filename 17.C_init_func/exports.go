@@ -4,6 +4,7 @@ import "C"
 import "log"
 
 func init() {
+	println(">> exports.init() called")
 	m["exports"] = true
 }
 

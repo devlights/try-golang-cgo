@@ -10,6 +10,7 @@ import "C"
 import "unsafe"
 
 func init() {
+	println(">> gofuncs.init() called")
 	m["gofuncs"] = true
 }
 
