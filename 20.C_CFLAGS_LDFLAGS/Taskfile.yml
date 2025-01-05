@@ -36,7 +36,7 @@ tasks:
   run-goapp:
     dir: goapp
     cmds:
-      - ./goApp
+      - LD_LIBRARY_PATH=../lib ./goApp
   list-symbols:
     cmds:
       - nm --extern-only capp/cApp   | grep -E ' [T|U] (main|myPrint)'
@@ -44,4 +44,4 @@ tasks:
   ldd:
     cmds:
       - LD_LIBRARY_PATH=lib ldd capp/cApp
-      - ldd goapp/goApp
+      - LD_LIBRARY_PATH=lib ldd goapp/goApp

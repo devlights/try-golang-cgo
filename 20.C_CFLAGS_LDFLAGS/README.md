@@ -10,7 +10,7 @@ CGOヘッダーには、C言語で利用する ```CFLAGS```, ```LDFLAGS``` が�
 #cgo LDFLAGS: -L../lib -lmylib
 
 #include <stdlib.h>
-#include "lib.c"
+#include "lib.h"
 */
 import "C"
 ```
@@ -23,32 +23,27 @@ task: [build-lib] make build
 gcc -g -O0 -Wall -Wextra -std=c17 -c /workspace/try-golang-cgo/20.C_CFLAGS_LDFLAGS/lib/lib.c -o /workspace/try-golang-cgo/20.C_CFLAGS_LDFLAGS/lib/lib.o 
 gcc -g -O0 -Wall -Wextra -std=c17 -fPIC -shared  -o ./libmylib.so /workspace/try-golang-cgo/20.C_CFLAGS_LDFLAGS/lib/lib.o 
 task: [build-capp] make build
-gcc -g -O0 -Wall -Wextra -std=c17 -c /workspace/try-golang-cgo/20.C_CFLAGS_LDFLAGS/capp/main.c -o /workspace/try-golang-cgo/20.C_CFLAGS_LDFLAGS/capp/main.o -I../lib
+gcc -g -O0 -Wall -Wextra -std=c17 -c /workspace/try-golang-cgo/20.C_CFLAGS_LDFLAGS/capp/main.c -o /workspace/try-golang-cgo/20.C_CFLAGS_LDFLAGS/capp/main.o 
 gcc -g -O0 -Wall -Wextra -std=c17 -L../lib -o ./cApp /workspace/try-golang-cgo/20.C_CFLAGS_LDFLAGS/capp/main.o -lmylib
 task: [build-goapp] go build -o goApp
 task: [run-capp] LD_LIBRARY_PATH=../lib ./cApp
 [C ] hello world
-task: [run-goapp] ./goApp
+task: [run-goapp] LD_LIBRARY_PATH=../lib ./goApp
 [C ] hello world
 task: [list-symbols] nm --extern-only capp/cApp   | grep -E ' [T|U] (main|myPrint)'
 0000000000001149 T main
                  U myPrint
 task: [list-symbols] nm --extern-only goapp/goApp | grep -E ' [T|U] (main|myPrint)'
-000000000045c600 T main
-0000000000461030 T myPrint
+00000000004642a0 T main
+                 U myPrint
 task: [ldd] LD_LIBRARY_PATH=lib ldd capp/cApp
-        linux-vdso.so.1 (0x00007ffe22799000)
-        libmylib.so => lib/libmylib.so (0x00007f29c42ce000)
-        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f29c409e000)
-        /lib64/ld-linux-x86-64.so.2 (0x00007f29c42da000)
-task: [ldd] ldd goapp/goApp
-        linux-vdso.so.1 (0x00007ffcd01a7000)
-        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fcf8ac0d000)
-        /lib64/ld-linux-x86-64.so.2 (0x00007fcf8ae3f000)
+        linux-vdso.so.1 (0x00007ffffa77c000)
+        libmylib.so => lib/libmylib.so (0x00007f5b71474000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f5b71244000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f5b71480000)
+task: [ldd] LD_LIBRARY_PATH=lib ldd goapp/goApp
+        linux-vdso.so.1 (0x00007fffd0998000)
+        libmylib.so => lib/libmylib.so (0x00007f776fe38000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f776fc08000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f776fe3f000)
 ```
-
-よく見ると、C言語のアプリの方は nm, ldd の結果ともに外部ライブラリの参照となっているが
-
-cgoの方は、soファイルが取り込まれているのか nm コマンドにて myPrint 関数が ```T``` で表示される。(C言語側は ```U```)
-
-また、ldd で見た場合に、```libmylib.so``` が出てこない。

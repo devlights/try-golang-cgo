@@ -5,7 +5,7 @@ package main
 #cgo LDFLAGS: -L../lib -lmylib
 
 #include <stdlib.h>
-#include "lib.c"
+#include "lib.h"
 */
 import "C"
 import "unsafe"
