@@ -18,7 +18,7 @@ type _Ctype_struct__Data struct {
 
 Goで配列は要素数も含めて型となるため、そのままでは (char *) としては利用できません。
 
-Cの文字列をGoの文字列として利用する際に使う C.GoString() は (char *) を引数に要求するようにします。
+Cの文字列をGoの文字列として利用する際に使う C.GoString() は (char *) を引数に要求します。
 
 変換を行うには一旦 unsafe.Pointer にしてから、望みの型へとキャストします。
 
