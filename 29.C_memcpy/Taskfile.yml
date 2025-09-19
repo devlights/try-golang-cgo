@@ -1,0 +1,11 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - rm -f app liba.*
+      - go build -o liba.a -buildmode=c-archive main.go
+      - gcc -Wall -o app app.c liba.a
+      - ./app
