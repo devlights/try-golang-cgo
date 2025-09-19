@@ -1,0 +1,70 @@
+---
+# ターゲットとする言語 (Cpp:C,C++)
+Language: Cpp
+
+# Googleのコーディングスタイルをベースにする。
+BasedOnStyle: Google
+
+# 引数の整列方法 (Align:縦に整列)
+AlignAfterOpenBracket: BlockIndent
+# 構造体の初期化子リストを整列 (Right:右揃え)
+AlignArrayOfStructures: Right
+# 連続する行の「=」の位置を揃える
+AlignConsecutiveAssignments: true
+# 連続する行の宣言を揃える
+AlignConsecutiveDeclarations: true
+# 連続する行のマクロを揃える
+AlignConsecutiveMacros: true
+# エスケープされた改行の円マークの位置を揃える (true:左寄せで揃える)
+AlignEscapedNewlines: true
+# 水平方向に二項演算子と三項演算子を揃える (false:揃えない)
+AlignOperands: false
+# 連続する行のコメントを揃える
+AlignTrailingComments: true
+# 短いenumの場合に１行にまとめる（false:まとめない)
+AllowShortEnumsOnASingleLine: false
+# 短い関数を単一行にする・しない (None:しない)
+AllowShortFunctionsOnASingleLine: None
+# 関数の引数の並べ方を指定する (true:1行の最大文字数を基準に折り返し, false:引数を各1行ずつに折り返す)
+BinPackArguments: false
+# 関数宣言や関数定義の引数の並べ方を指定する (true:1行の最大文字数を基準に折り返し, false:引数を各1行ずつに折り返す)
+BinPackParameters: false
+# "{ }"の位置のカスタム設定
+BraceWrapping:
+  AfterClass: true # classの後
+  AfterControlStatement: false # 制御文の後
+  AfterEnum: false # enumの後
+  AfterFunction: true # 関数の後
+  AfterStruct: false # structの後
+  AfterUnion: false # unionの後
+  AfterExternBlock: false # externの後
+  BeforeCatch: false # catchの前
+  BeforeElse: false # elseの前
+# "{ }"の位置 (Attach:常にコンテキストに付ける, Allman:常に独立した行, Custom:BraceWrappingで個々設定)
+BreakBeforeBraces: Custom
+# カラム幅 (0:無制限)
+ColumnLimit: 150
+# includeのソート（Preserve:連続する行を整列, Merge:離れた行も連結して整列)
+IncludeBlocks: Preserve
+# caseにインデントを設定 (false:しない)
+IndentCaseLabels: false
+# インデント幅
+IndentWidth: 4
+# ポインターの「*」や「&」の位置を揃える
+PointerAlignment: Right
+# キャストの後にスペースを入れるかを設定 (false: スペース入れない)
+SpaceAfterCStyleCast: false
+# 演算子の前にスペースを入れるかを設定 (true: スペース入れる)
+SpaceBeforeAssignmentOperators: true
+# 開始括弧「(」の前にスペースを入れるかを設定 (Never:入れない, ControlStatements:制御分の前には入れる)
+SpaceBeforeParens: ControlStatements
+# 空の括弧( )内にスペースを入れるかを設定 (false:入れない)
+SpaceInEmptyParentheses: false
+# キャストの( )内にスペースを入れるかを設定 (false:入れない)
+SpacesInCStyleCastParentheses: false
+# ( )内にスペースを入れるかを設定 (false:入れない)
+SpacesInParentheses: false
+# [ ]内にスペースを入れるかを設定 (false:入れない)
+SpacesInSquareBrackets: false
+# タブ利用可否
+UseTab: Never

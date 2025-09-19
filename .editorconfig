@@ -1,0 +1,57 @@
+root = true
+
+# 全体設定
+[*]
+# 文字コード
+charset = utf-8
+# 改行コード
+end_of_line = lf
+# インデントのスタイル（スペースorタブ)
+indent_style = space
+# インデントのサイズ
+indent_size = 4
+# ファイルの末尾に空行を挿入する
+insert_final_newline = true
+# 行の末尾に連続するスペースを除去
+trim_trailing_whitespace = true
+
+# Makefile用の設定
+[Makefile]
+indent_style = tab
+indent_size = 4
+
+# C用の設定
+[*.c]
+indent_style = space
+indent_size = 4
+
+# C++用の設定
+[*.cpp]
+indent_style = space
+indent_size = 4
+
+# Java用の設定
+[*.java]
+indent_style = space
+indent_size = 4
+
+# JavaScript用の設定
+[*.js]
+indent_style = space
+indent_size = 4
+
+# TypeScript用の設定
+[*.ts]
+indent_style = space
+indent_size = 4
+
+# Python用の設定
+[*.py]
+indent_style = space
+indent_size = 4
+
+# Go用の設定
+[*.go]
+indent_style = tab
+indent_size = 4
+insert_final_newline = false
