@@ -1,0 +1,34 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  LIB: clib
+  APP: capp
+
+tasks:
+  default:
+    cmds:
+      - task: build-clib
+      - task: build-cgo
+      - task: build-capp
+      - task: run
+  build-clib:
+    dir: ./{{.LIB}}
+    cmds:
+      - gcc -g3 -O0 -Wall -Wextra -shared -fPIC -o lib{{.LIB}}.so {{.LIB}}.c
+  build-cgo:
+    dir: cgo
+    cmds:
+      - go build -buildmode=c-shared -o lib{{.LIB}}.so main.go
+  build-capp:
+    dir: ./{{.APP}}
+    cmds:
+      - gcc -g3 -O0 -Wall -Wextra -I. -L../clib -o {{.APP}} {{.APP}}.c -l{{.LIB}}
+  run:
+    dir: ./{{.APP}}
+    cmds:
+      - echo -n '[1][NO   LD_PRELOAD] ' && ./{{.APP}}
+      - echo -n '[2][WITH LD_PRELOAD] ' && LD_PRELOAD=../cgo/lib{{.LIB}}.so ./{{.APP}}
+    env:
+      LD_LIBRARY_PATH: ../clib
