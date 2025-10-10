@@ -38,7 +38,7 @@
 | [30.C_static_link_library](./30.C_static_link_library/) | 静的ライブラリ (`.a`) をリンクする方法 |
 | [31.C_callback](./31.C_callback/) | Goの関数をCにコールバックとして渡す（基本的なイディオム） |
 | [32.C_callback_safe_way](./32.C_callback_safe_way/) | Goの関数をCにコールバックとして渡す（Cの`typedef`を利用する方法） |
-
+| [32.C_mock_with_ld_prelaod](./32.C_mock_with_ld_prelaod/) | LD_PRELOAD を利用したモック|
 
 
 
