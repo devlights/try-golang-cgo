@@ -38,7 +38,7 @@
 | [30.C_static_link_library](./30.C_static_link_library/) | 静的ライブラリ (`.a`) をリンクする方法 |
 | [31.C_callback](./31.C_callback/) | Goの関数をCにコールバックとして渡す（基本的なイディオム） |
 | [32.C_callback_safe_way](./32.C_callback_safe_way/) | Goの関数をCにコールバックとして渡す（Cの`typedef`を利用する方法） |
-| [32.C_mock_with_ld_prelaod](./32.C_mock_with_ld_prelaod/) | LD_PRELOAD を利用したモック|
+| [33.C_mock_with_ld_preload](./33.C_mock_with_ld_preload/) | LD_PRELOAD を利用したモック|
 
 
 
@@ -52,3 +52,4 @@
 - [cgoを使ったCとGoのリンクの裏側 (2)](https://qiita.com/yugui/items/cc490d080e0297251090)
 - [ebitengine/purego](https://github.com/ebitengine/purego)
 - [JupiterRider/ffi](https://github.com/JupiterRider/ffi)
+- [cgo: How to prevent "multiple definition..." error when using cgo to include a C header file in a package?](https://stackoverflow.com/a/77741947)
