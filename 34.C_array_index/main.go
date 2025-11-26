@@ -21,7 +21,7 @@ void init_item_list(void) {
 		Item *item = &item_list[i];
 
 		char buf[KEY_LENGTH];
-		int len = snprintf(buf, KEY_LENGTH, "item-%02d", i);
+		int len = snprintf(buf, KEY_LENGTH, "item-%02zu", i);
 		strncpy(item->key, buf, len);
 		item->key[len] = '\0';
 
