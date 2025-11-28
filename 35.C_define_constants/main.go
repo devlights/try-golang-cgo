@@ -17,7 +17,7 @@ import "fmt"
 func main() {
 	//
 	// cgoでは
-	//   - defineで定義した定数は見える
+	//   - defineで定義したマクロ定数は見える
 	//   - マクロは見えない
 	//
 	var (
