@@ -66,6 +66,6 @@ task: [default] go run main.go
 
 ## 参考情報
 
-* [Go 1.23 Release Notes - Standard library](https://www.google.com/search?q=https://tip.golang.org/doc/go1.23%23structs)
-* [Type structs.HostLayout - go.dev](https://www.google.com/search?q=https://pkg.go.dev/structs%23HostLayout)
+* [Go 1.23 Release Notes - Standard library](https://go.dev/doc/go1.23#new-structs-package)
+* [Type structs.HostLayout - go.dev](https://pkg.go.dev/structs#HostLayout)
 
