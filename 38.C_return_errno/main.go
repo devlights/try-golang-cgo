@@ -8,7 +8,7 @@ package main
 #include <fcntl.h>
 #include <unistd.h>
 
-// open(2) は glibc で varargs 宣言されているため cgo から直接呼べないため
+// open(2) は glibc で varargs 宣言されている。そのため cgo から直接呼べないので
 // 固定引数の static inline ラッパーを用意して回避する。
 // macOSの場合は、openが固定引数で見えるので、この問題は発生しない。
 static inline int go_open(const char *p, int flags) {
@@ -68,7 +68,7 @@ func run(_ context.Context) error {
 		//
 		// errも返ってきているが C の関数を扱う場合は err != nil だけで判定するのは危険。
 		// Cのセオリー通り、まず戻り値で判定し、その後で必要であれば err を使う。
-		// 実際 errが存在する場合 syscall.Errno となる。（呼び出しが成功している場合、通常nilとなる)
+		// errが存在する場合 syscall.Errno となる。（呼び出しが成功している場合、通常nilとなる)
 		fd, err = C.go_open(v.cpath, C.int(syscall.O_RDONLY))
 		if fd == -1 {
 			// err は、実際には syscall.Errno となっている
@@ -80,7 +80,8 @@ func run(_ context.Context) error {
 			)
 			return fmt.Errorf("NG: open(%s): fd=%d (%w)(0x%x:ENOENT=%v)", v.fpath, fd, err, eno, isNOENT)
 		}
-		defer C.close(fd)
+
+		C.close(fd)
 
 		log.Printf("OK: open(%s): fd=%d (%v)", v.fpath, fd, err)
 	}
